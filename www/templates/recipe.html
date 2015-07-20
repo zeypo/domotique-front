@@ -1,0 +1,50 @@
+<ion-view view-title="Recipe">
+    <ion-content>
+        <h1 style="text-align:center;" class="padding">{{recipe.title}}</h1>
+
+        <div class="card">
+            <div class="item item-text-wrap">
+
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            SI
+                        </div>
+                        <select ng-model="recipe.if.title">
+                            <option  ng-selected="{{object.id == recipe.if.id}}" ng-repeat="object in objects">{{object.title}}</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            ALORS
+                        </div>
+                        <select ng-model="recipe.then.title">
+                            <option  ng-selected="{{object.id == recipe.then.id}}" ng-repeat="object in objects">{{object.title}}</option>
+                        </select>
+                    </label>
+
+                    <ul class="list">
+                        <li class="item item-toggle">
+                            Activé
+                            <label class="toggle toggle-calm">
+                                <input type="checkbox" value="off">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row padding">
+            <button class="button button-calm" style="width:100%;">Valider</button>
+        </div>
+        <div class="row padding">
+            <button class="button button-assertive" style="width:100%;">Supprimer</button>
+        </div>
+    </ion-content>
+</ion-view>

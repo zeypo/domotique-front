@@ -1,0 +1,9 @@
+<ion-view view-title="Notifications">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="notification in notifications">
+        {{notification.title}} : {{notification.time}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
