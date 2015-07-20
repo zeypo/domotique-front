@@ -10,8 +10,8 @@
                         <div class="input-label">
                             SI
                         </div>
-                        <select ng-model="recipe.if.title">
-                            <option  ng-selected="{{object.id == recipe.if.id}}" ng-repeat="object in objects">{{object.title}}</option>
+                        <select ng-model="recipe.if.id">
+                            <option  ng-selected="{{object.id == recipe.if.id}}" ng-repeat="object in objects" value="{{object.id}}">{{object.title}}</option>
                         </select>
                     </label>
 
@@ -19,8 +19,8 @@
                         <div class="input-label">
                             ALORS
                         </div>
-                        <select ng-model="recipe.then.title">
-                            <option  ng-selected="{{object.id == recipe.then.id}}" ng-repeat="object in objects">{{object.title}}</option>
+                        <select ng-model="recipe.then.id">
+                            <option  ng-selected="{{object.id == recipe.then.id}}" ng-repeat="object in objects" value="{{object.id}}">{{object.title}}</option>
                         </select>
                     </label>
 
@@ -41,7 +41,7 @@
         </div>
 
         <div class="row padding">
-            <button class="button button-calm" style="width:100%;">Valider</button>
+            <button class="button button-calm" ng-click="updateRecipe(recipe)" style="width:100%;">Valider</button>
         </div>
         <div class="row padding">
             <button class="button button-assertive" style="width:100%;">Supprimer</button>

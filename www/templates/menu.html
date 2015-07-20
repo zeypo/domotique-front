@@ -5,8 +5,7 @@
             </ion-nav-back-button>
 
             <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-                </button>
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
@@ -21,12 +20,15 @@
         <ion-content>
             <ion-list>
                 <ion-item menu-close ng-repeat="recipe in recipes" href="#/app/recipes/{{recipe.id}}">
-                    {{recipe.title}}
+                    <span class="menu-text">{{recipe.title}}</span>
+                    <span class="menu-icon {{recipe.state}}"><i class="icon ion-checkmark-round"></i></span>
                 </ion-item>
             </ion-list>
 
             <div class="row padding">
-                <a href="#/app/recipe/create"><button class="button button-block button-positive">Créer une recette</button></a>
+                <div class="button-bar">
+                    <a class="button button-block button-positive" menu-close href="#/app/recipe/create">Créer une recette</button>
+                </a>
             </div>
         </ion-content>
     </ion-side-menu>

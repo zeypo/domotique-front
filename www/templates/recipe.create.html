@@ -1,5 +1,43 @@
 <ion-view view-title="RecipeCreate">
     <ion-content>
-        Hello World
+        <h1 style="text-align:center;" class="padding">Création d'une recette</h1>
+
+        <form class="recipe-create" novalidate>
+
+            <div class="card">
+                <div class="item item-text-wrap">
+
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Titre" ng-model=newrecipe.title>
+                        </label>
+
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                SI
+                            </div>
+                            <select ng-model="newrecipe.if.title">
+                                <option ng-repeat="object in objects" value="{{object.id}}">{{object.title}}</option>
+                            </select>
+                        </label>
+
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                ALORS
+                            </div>
+                            <select ng-model="newrecipe.then.title">
+                                <option ng-repeat="object in objects" value="{{object.id}}">{{object.title}}</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row padding">
+                <button class="button button-calm" style="width:100%;" ng-click="create(newrecipe)">Créer !</button>
+            </div>
+        </form>
     </ion-content>
 </ion-view>

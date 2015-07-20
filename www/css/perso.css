@@ -1,0 +1,20 @@
+.menu-text {
+    width: calc(100% - 20px);
+    overflow:hidden;
+    display: block;
+    white-space: pre-line;
+    float:left;
+}
+
+.menu-icon {
+    float:right;
+    width:20px;
+    text-align: right;
+}
+
+.menu-icon.on {
+    color : #27ae60;
+}
+.menu-icon.off {
+    color : #95a5a6;
+}

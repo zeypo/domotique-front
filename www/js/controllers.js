@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers',[])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
             id    : 2,
             title : 'Automatisation des lumières',
             desc  : 'Si aucun mouvement n\'est éffectué dans la maison les lumières s\'éteignent.',
-            state : 'on'
+            state : 'off'
         },
         {
             id    : 3,
@@ -68,13 +68,29 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RecipeCtrl', function($scope, $stateParams) {
+
     var indexrecipe    = _.findIndex($scope.recipes, 'id', parseFloat($stateParams.recipeId));
     $scope.recipe      = $scope.recipes[indexrecipe];
     $scope.recipe.if   = $scope.objects[_.findIndex($scope.objects, 'id', $scope.recipe.if)];
     $scope.recipe.then = $scope.objects[_.findIndex($scope.objects, 'id', $scope.recipe.then)];
+
+    $scope.updateRecipe = function(recipe) {
+        $scope.recipes[indexrecipe] = recipe;
+    };
 })
 
 .controller('RecipeCreateCtrl', function($scope) {
+
+    $scope.create = function(newrecipe) {
+        newrecipe.id = Math.floor((Math.random() * 100) + 1);
+        newrecipe.state = 'on';
+
+        $scope.recipes.push(newrecipe);
+    };
+
+    $scope.$on('$ionicView.enter', function(e) {
+        $scope.newrecipe = {};
+    });
 
 })
 ;
