@@ -50,6 +50,16 @@ angular.module('starter.controllers',[])
             id    : 2,
             title : 'notification',
             desc  : 'Créer une notification'
+        },
+        {
+            id    : 3,
+            title : 'Capteur de luminosité',
+            desc  : 'Donne un indice de luminosité de 1 à 10'
+        },
+        {
+            id    : 4,
+            title : 'capteur de temperature',
+            desc  : 'Donne la tempèrature ambiante'
         }
     ];
 
@@ -86,6 +96,19 @@ angular.module('starter.controllers',[])
         newrecipe.state = 'on';
 
         $scope.recipes.push(newrecipe);
+
+        // Redirige après la création d'une recette
+        $('.recipe-create').fadeOut(300, function() {
+            $('.validate-recipe').fadeIn(300);
+
+            setTimeout(function(){
+                $('.validate-recipe').fadeOut(300, function(){
+                    $('.recipe-create').fadeIn();
+                });
+            }, 2000);
+        });
+
+        $scope.newrecipe = {};
     };
 
     $scope.$on('$ionicView.enter', function(e) {
