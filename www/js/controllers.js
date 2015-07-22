@@ -1,13 +1,7 @@
 angular.module('starter.controllers',[])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
 
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
     $scope.notifications = [
         {
             id : 1,
@@ -72,6 +66,26 @@ angular.module('starter.controllers',[])
     }).then(function(modal) {
         $scope.modal = modal;
     });
+
+    /* POPUPS */
+    $scope.showAlert = function(recipe) {
+        var alertPopup = $ionicPopup.alert({
+            title: recipe.title,
+            template: 'Un mouvement à été éfféctué'
+        });
+
+        alertPopup.then(function(res) {
+            var notification = new Notification(recipe);
+            $scope.notifications.push(notification);
+        });
+     };
+
+    var Notification = function(recipe) {
+        this.id    = Math.floor((Math.random() * 1000) + 1);
+        this.title = 'Un mouvement à été éfféctué';
+        this.time  = moment().format('DD-MM-YYYY HH:mm');
+    };
+
 })
 
 .controller('NotificationsCtrl', function($scope) {
