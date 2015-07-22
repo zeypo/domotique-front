@@ -86,6 +86,11 @@ angular.module('starter.controllers',[])
         this.time  = moment().format('DD-MM-YYYY HH:mm');
     };
 
+    var ws = new WebSocket("ws://192.168.1.116:8000");
+
+    ws.onmessage = function (event) {
+        $scope.showAlert($scope.recipes[0]);
+    };
 })
 
 .controller('NotificationsCtrl', function($scope) {
