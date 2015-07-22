@@ -27,17 +27,13 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script>
-        app.initialize();
-        document.addEventListener('deviceready', function() {
-            var connection = ws.connect('ws://192.168.1.138:8000', function() {
-                var image_string = image.toString('hex');
-                connection.sendText(image_string, function(){
-                    connection.close();
-                });
-                //connection.sendText(image_string );
-                
-            });
-          });
+
+            var ws = new WebSocket("ws://192.168.1.138:8000");
+
+                ws.onmessage = function (event) {
+                    console.log(event.data);
+                }
+
     </script>
   </head>
 
